@@ -4,12 +4,14 @@ import "./ProjectDetails.css";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { FaChevronDown } from "react-icons/fa";
 
+import NoResults from "./images/no-result.png";
+
 export default function ProjectDetails() {
   return (
     <div className="details_container">
       <div className="details_header">
         <div className="details_header_left">
-          <IoArrowBackOutline size={40} className="icon" />
+          <IoArrowBackOutline size={24} className="icon" />
           <h3 className="details_title">Edit - A New Project</h3>
         </div>
         <div className="details_header_right">
@@ -25,51 +27,65 @@ export default function ProjectDetails() {
           <div className="details_input_block">
             <label for="id">User Custom Id</label>
             <br />
-            <input type="text" id="html" name="id" placeholder="MNIST" />
+            <input type="text" id="id" name="id" placeholder="MNIST" />
             <br></br>
           </div>
           <div className="details_input_block">
-            <label for="id">Owner</label>
+            <label for="owner">Owner</label>
             <br />
             <input
               type="email"
-              id="html"
-              name="id"
+              id="owner"
+              name="owner"
               placeholder="nicolar.schifano@gmail.com"
             />
             <br></br>
           </div>
           <div className="details_input_block">
-            <label for="id">Created</label>
+            <label for="created">Created</label>
             <br />
-            <input type="id" id="html" name="id" placeholder="04/12/2002" />
+            <input
+              type="text"
+              id="created"
+              name="created"
+              placeholder="04/12/2002"
+            />
             <br></br>
           </div>
           <div className="details_input_block">
-            <label for="id">Last Updated</label>
+            <label for="updated">Last Updated</label>
             <br />
-            <input type="id" id="html" name="id" placeholder="04/12/2002" />
+            <input
+              type="id"
+              id="updated"
+              name="updated"
+              placeholder="04/12/2002"
+            />
             <br></br>
           </div>
         </div>
       </div>
       <div>
-        <div className="myproject-content d-flex justify-content-between">
-          <div className="myproject-heading">
+        <div className="members_content d-flex justify-content-between">
+          <div className="members_heading">
             <h2>Members</h2>
           </div>
           <div>
             {" "}
-            <button className="new_project">Add Members</button>
+            <button className="new_members">Add Members</button>
           </div>
         </div>
         <div className="overflows margin">
           <table className="table table-bordered table-hover">
             <thead className="table_color">
               <tr className="table_row table_row_selected">
-                <th className="full_name full_name_selected">Member Name</th>
-                <th className="modality  modality_selected">Member Email</th>
-                <th className="Data_provider Data_provider_Selected">Action</th>
+                <th className="members_name members_name_selected">
+                  Member Name
+                </th>
+                <th className="members_email members_email_selected">
+                  Member Email
+                </th>
+                <th className="actions  actions_selected">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -100,35 +116,34 @@ export default function ProjectDetails() {
         </div>
       </div>
       <div className="">
-        <div className="myproject-content d-flex justify-content-between">
-          <div className="myproject-heading">
+        <div className="assets_content d-flex justify-content-between">
+          <div className="assets_heading">
             <h2>Assets</h2>
           </div>
           <div>
             {" "}
-            <button className="new_project">Add Dataset or Model</button>
+            <button className="new_assets">Add Dataset or Model</button>
           </div>
         </div>
         <div className="overflows margin">
           <table className="table table-bordered table-hover">
             <thead className="table_color">
               <tr className="table_row table_row_selected">
-                <th className="full_name full_name_selected">Asset Name</th>
+                <th className="asset_name asset_name_selected">Asset Name</th>
                 <th className="modality  modality_selected">Modality</th>
-                <th className="Data_provider Data_provider_Selected">Type</th>
-                <th className="Data_provider Data_provider_Selected">
+                <th className="type type_selected">Type</th>
+                <th className="data_provider data_provider_selected">
                   Provider
                 </th>
-                <th className="Data_provider Data_provider_Selected">
-                  Homepage
-                </th>
-                <th className="Data_provider Data_provider_Selected">Action</th>
+                <th className="homepage homepage_selected">Homepage</th>
+                <th className="actions actions_selected">Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr className={`table_data_row table_data_row_selected `}></tr>
-            </tbody>
           </table>
+          <div className="no-result">
+            <img src={NoResults} alt="no-result" />
+            <h1>No results..</h1>
+          </div>
         </div>
       </div>
     </div>

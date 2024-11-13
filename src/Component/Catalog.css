@@ -582,6 +582,6 @@ tbody {
 }
 
 .overflows {
-    max-height: 730px; /* Adjust as needed */
-    overflow-y: auto; /* Scrollable when necessary */
-  }
+  max-height: 730px; /* Adjust as needed */
+  overflow-y: auto; /* Scrollable when necessary */
+}
