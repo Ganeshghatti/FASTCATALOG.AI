@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import './Slidebar.css';
-import { images } from './images/Imagesholder';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import supabase from '../SupabaseAuth/supabaseClient';
+import React, { useState, useEffect } from "react";
+import "./Slidebar.css";
+import { images } from "./images/Imagesholder";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
+import supabase from "../SupabaseAuth/supabaseClient";
 
 const Sidebar = () => {
   const location = useLocation();
-  const [activeLink, setActiveLink] = useState('/Catalog');
+  const [activeLink, setActiveLink] = useState("/Catalog");
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const path = location.pathname;
-    if (path !== '/Catalog') {
+    if (path !== "/Catalog") {
       setActiveLink(path);
     }
   }, [location]);
@@ -27,7 +27,7 @@ const Sidebar = () => {
     const { error } = await supabase.auth.signOut();
 
     if (error) {
-      navigate('/');
+      navigate("/");
     }
   };
 
@@ -37,7 +37,7 @@ const Sidebar = () => {
         <FaBars />
       </div>
       <div
-        className={`d-flex flex-column Slide_bar_width ${isOpen ? 'open' : ''}`}
+        className={`d-flex flex-column Slide_bar_width ${isOpen ? "open" : ""}`}
       >
         <div className="logo_images">
           <img src={images.Fastcatallogo} alt="Logo" />
@@ -49,17 +49,17 @@ const Sidebar = () => {
           <NavLink
             to="/Myproject"
             className="nav-link"
-            onClick={() => handleClick('/Myproject')}
+            onClick={() => handleClick("/Myproject")}
           >
             <li
               className={`nav-item ${
-                activeLink === '/Myproject' ? 'active-links' : ''
+                activeLink === "/Myproject" ? "active-links" : ""
               }`}
             >
               <div className="nav-icon">
                 <img
                   src={
-                    activeLink === '/Myproject'
+                    activeLink === "/Myproject"
                       ? images.Dashboardb
                       : images.Dashboard
                   }
@@ -68,26 +68,26 @@ const Sidebar = () => {
               </div>
               <div>My Project </div>
               <div>
-                {activeLink === '/Myproject' && (
+                {activeLink === "/Myproject" && (
                   <img className="dots" src={images.Elipsdot} alt="dot" />
                 )}
               </div>
             </li>
           </NavLink>
 
-          <NavLink to="/" className="nav-link" onClick={() => handleClick('/')}>
+          <NavLink to="/" className="nav-link" onClick={() => handleClick("/")}>
             <li
-              className={`nav-item ${activeLink === '/' ? 'active-links' : ''}`}
+              className={`nav-item ${activeLink === "/" ? "active-links" : ""}`}
             >
               <div className="nav-icon">
                 <img
-                  src={activeLink === '/' ? images.Property : images.Propertyb}
+                  src={activeLink === "/" ? images.Property : images.Propertyb}
                   alt="Catalog"
                 />
               </div>
               <div>Catalog </div>
               <div>
-                {activeLink === '/' && (
+                {activeLink === "/" && (
                   <img className="dots" src={images.Elipsdot} alt="dot" />
                 )}
               </div>
@@ -96,24 +96,24 @@ const Sidebar = () => {
           <NavLink
             to="/Tools"
             className="nav-link"
-            onClick={() => handleClick('/Tools')}
+            onClick={() => handleClick("/Tools")}
           >
             <li
               className={`nav-item ${
-                activeLink === '/Tools' ? 'active-links' : ''
+                activeLink === "/Tools" ? "active-links" : ""
               }`}
             >
               <div className="nav-icon">
                 <img
                   src={
-                    activeLink === '/Tools' ? images.Documentb : images.Document
+                    activeLink === "/Tools" ? images.Documentb : images.Document
                   }
                   alt="Tools"
                 />
               </div>
               <div>Tools </div>
               <div>
-                {activeLink === '/Tools' && (
+                {activeLink === "/Tools" && (
                   <img className="dots" src={images.Elipsdot} alt="dot" />
                 )}
               </div>
@@ -122,17 +122,17 @@ const Sidebar = () => {
           <NavLink
             to="/Settings"
             className="nav-link"
-            onClick={() => handleClick('/Settings')}
+            onClick={() => handleClick("/Settings")}
           >
             <li
               className={`nav-item ${
-                activeLink === '/Settings' ? 'active-links' : ''
+                activeLink === "/Settings" ? "active-links" : ""
               }`}
             >
               <div className="nav-icon">
                 <img
                   src={
-                    activeLink === '/Settings'
+                    activeLink === "/Settings"
                       ? images.Settingb
                       : images.Setting
                   }
@@ -141,7 +141,7 @@ const Sidebar = () => {
               </div>
               <div>Settings </div>
               <div>
-                {activeLink === '/Settings' && (
+                {activeLink === "/Settings" && (
                   <img className="dots" src={images.Elipsdot} alt="dot" />
                 )}
               </div>
@@ -151,23 +151,23 @@ const Sidebar = () => {
           <NavLink
             to="/Api"
             className="nav-link"
-            onClick={() => handleClick('/Api')}
+            onClick={() => handleClick("/Api")}
           >
             <li
               className={`nav-item ${
-                activeLink === '/Api' ? 'active-links' : ''
+                activeLink === "/Api" ? "active-links" : ""
               }`}
             >
               <div className="nav-icon">
                 <img
-                  src={activeLink === '/Api' ? images.Lineb : images.Line}
+                  src={activeLink === "/Api" ? images.Lineb : images.Line}
                   alt="API"
                 />
               </div>
               <div>API</div>
               <div>
-                {' '}
-                {activeLink === '/Api' && (
+                {" "}
+                {activeLink === "/Api" && (
                   <img className="dots" src={images.Elipsdot} alt="dot" />
                 )}
               </div>
@@ -177,46 +177,22 @@ const Sidebar = () => {
           <NavLink
             to="/Help"
             className="nav-link"
-            onClick={() => handleClick('/Help')}
+            onClick={() => handleClick("/Help")}
           >
             <li
               className={`nav-item ${
-                activeLink === '/Help' ? 'active-links' : ''
+                activeLink === "/Help" ? "active-links" : ""
               }`}
             >
               <div className="nav-icon">
                 <img
-                  src={activeLink === '/Help' ? images.Graphb : images.Graph}
+                  src={activeLink === "/Help" ? images.Graphb : images.Graph}
                   alt="Help"
                 />
               </div>
               <div>Help</div>
               <div>
-                {activeLink === '/Help' && (
-                  <img className="dots" src={images.Elipsdot} alt="dot" />
-                )}
-              </div>
-            </li>
-          </NavLink>
-          <NavLink
-            to="/Help"
-            className="nav-link"
-            onClick={() => handleClick('/Help')}
-          >
-            <li
-              className={`nav-item ${
-                activeLink === '/Help' ? 'active-links' : ''
-              }`}
-            >
-              <div className="nav-icon">
-                <img
-                  src={activeLink === '/Help' ? images.Graphb : images.Graph}
-                  alt="signput"
-                />
-              </div>
-              <div>Help</div>
-              <div>
-                {activeLink === '/Help' && (
+                {activeLink === "/Help" && (
                   <img className="dots" src={images.Elipsdot} alt="dot" />
                 )}
               </div>
@@ -224,7 +200,9 @@ const Sidebar = () => {
           </NavLink>
         </ul>
         <div className="signout-button">
-          <button className="btn btn-danger" onClick={() => onSignOut()}>Sign Out</button>
+          <button className="btn btn-danger" onClick={() => onSignOut()}>
+            Sign Out
+          </button>
         </div>
       </div>
     </div>

@@ -2,21 +2,73 @@ import React from "react";
 import "./MainContent.css";
 import "./ProjectDetails.css";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { FaChevronDown } from "react-icons/fa";
+import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import NoResults from "./images/no-result.png";
+import Actions from "./images/actions.png";
 
 export default function ProjectDetails() {
+  const navigate = useNavigate();
+
+  const handleBack = (id) => {
+    navigate(`/Myproject`);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const [ownerEmail, setOwnerEmail] = useState("nicolar.schifano@gmail.com");
+  const [userCustomId, setUserCustomId] = useState("MNIST");
+  const [createdAt, setCreatedAt] = useState("04/12/2002");
+  const [updatedAt, setUpdatedAt] = useState("04/12/2002");
+
   return (
     <div className="details_container">
       <div className="details_header">
         <div className="details_header_left">
-          <IoArrowBackOutline size={24} className="icon" />
+          <IoArrowBackOutline
+            size={24}
+            className="icon"
+            onClick={() => handleBack()}
+          />
           <h3 className="details_title">Edit - A New Project</h3>
         </div>
         <div className="details_header_right">
-          <h4>Actions</h4>
-          <FaChevronDown size={20} />
+          <div className="details_dropdown">
+            <div className="details_dropdown_trigger" onClick={toggleDropdown}>
+              <h4>Actions</h4>
+              {isOpen ? (
+                <img src={Actions} alt="action" width={24} />
+              ) : (
+                <img src={Actions} alt="action" width={24} className="rotate" />
+              )}
+            </div>
+            {isOpen && (
+              <div
+                style={{
+                  position: "relative",
+                }}
+                className="slide-bottom glass"
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                  }}
+                  className="dropdown"
+                >
+                  <p className="dropdown-item">Delete Project</p>
+                  <p className="dropdown-item">
+                    Generate Date Bill of Materials
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className="details_inputs_container">
@@ -25,41 +77,50 @@ export default function ProjectDetails() {
         </div>
         <div className="details_input_collection">
           <div className="details_input_block">
-            <label for="id">User Custom Id</label>
-            <br />
-            <input type="text" id="id" name="id" placeholder="MNIST" />
-            <br></br>
-          </div>
-          <div className="details_input_block">
-            <label for="owner">Owner</label>
-            <br />
-            <input
-              type="email"
-              id="owner"
-              name="owner"
-              placeholder="nicolar.schifano@gmail.com"
-            />
-            <br></br>
-          </div>
-          <div className="details_input_block">
-            <label for="created">Created</label>
+            <label for="user_custom_id">User Custom Id</label>
             <br />
             <input
               type="text"
-              id="created"
-              name="created"
-              placeholder="04/12/2002"
+              id="user_custom_id"
+              name="user custom id"
+              value={userCustomId}
+              onChange={(e) => setUserCustomId(e.target.value)}
             />
             <br></br>
           </div>
           <div className="details_input_block">
-            <label for="updated">Last Updated</label>
+            <label for="owner_email">Owner</label>
             <br />
             <input
-              type="id"
-              id="updated"
-              name="updated"
-              placeholder="04/12/2002"
+              type="email"
+              id="owner_email"
+              name="owner email"
+              value={ownerEmail} // Controlled input value
+              onChange={(e) => setOwnerEmail(e.target.value)}
+            />
+            <br></br>
+          </div>
+          <div className="details_input_block">
+            <label for="created_aT">Created</label>
+            <br />
+            <input
+              type="text"
+              id="created_at"
+              name="created_at"
+              value={createdAt}
+              onChange={(e) => setCreatedAt(e.target.value)}
+            />
+            <br></br>
+          </div>
+          <div className="details_input_block">
+            <label for="updated_at">Last Updated</label>
+            <br />
+            <input
+              type="text"
+              id="updated_at"
+              name="updated_at"
+              value={updatedAt}
+              onChange={(e) => setUpdatedAt(e.target.value)}
             />
             <br></br>
           </div>
@@ -139,11 +200,15 @@ export default function ProjectDetails() {
                 <th className="actions actions_selected">Action</th>
               </tr>
             </thead>
+            <tbody className={`table_data_row table_data_row_selected `}>
+              <tr>
+                <td colSpan="6" style={{ textAlign: "center", padding: 15 }}>
+                  <img src={NoResults} alt="no-result" width={140} />
+                  <h1 className="no-result-text">No results..</h1>
+                </td>
+              </tr>
+            </tbody>
           </table>
-          <div className="no-result">
-            <img src={NoResults} alt="no-result" />
-            <h1>No results..</h1>
-          </div>
         </div>
       </div>
     </div>

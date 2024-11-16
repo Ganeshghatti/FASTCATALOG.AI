@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  background: #f9f9f9 !important;
 }
 
 .nav-link {
@@ -20,10 +21,9 @@ button.btn-link {
 }
 .main_container_box {
   display: flex;
-  gap: 24px;
   height: 100vh;
 }
-input[type='text'],
+input[type="text"],
 select {
   border-radius: 8px;
 }
@@ -151,7 +151,7 @@ th {
   border-width: 0 !important;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   width: 18px;
   height: 18px;
   accent-color: #141263;
@@ -187,7 +187,7 @@ input[type='checkbox'] {
   width: 208px;
 }
 
-input[type='text'],
+input[type="text"],
 select {
   border-radius: 8px;
 }
@@ -255,4 +255,16 @@ select {
 
 .supabase-auth-ui_ui-message {
   color: red !important;
+}
+
+.padding-left-sidebar-effect {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+@media (min-width: 1085px) {
+  .padding-left-sidebar-effect {
+    padding-left: 20rem;
+    padding-right: 1rem;
+  }
 }
